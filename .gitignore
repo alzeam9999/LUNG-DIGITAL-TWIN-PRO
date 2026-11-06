@@ -1,0 +1,30 @@
+# ملفات بايثون المؤقتة
+__pycache__/
+*.pyc
+
+# مجلدات النظام والبناء (PyInstaller وغيرها)
+build/
+dist/
+*.spec
+.vscode/
+
+# قواعد البيانات (حماية لبيانات المرضى)
+*.db
+*.sqlite
+
+# ملفات المرضى والتسجيلات
+recordings/
+patient_ct_images/*
+!patient_ct_images/.gitkeep
+
+# سجلات البرنامج وملفات الإكسل
+*.txt
+*.csv
+
+# ملفات الضغط (مثل VS projects.rar)
+*.rar
+*.zip
+
+# بيئة بايثون الافتراضية
+venv/
+env/

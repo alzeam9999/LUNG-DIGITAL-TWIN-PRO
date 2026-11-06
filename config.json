@@ -1,0 +1,140 @@
+{
+    "FiO2Engine": {
+        "weights": {
+            "pao2": 0.25,
+            "spo2": 0.20,
+            "pf_ratio": 0.20,
+            "ct_involvement": 0.15,
+            "wob": 0.10,
+            "lactate": 0.10
+        },
+        "max_delta": 5
+    },
+    "PEEPEngine": {
+        "mri_weights": {
+            "compliance": 0.30,
+            "recruitability": 0.25,
+            "atelectasis": 0.20,
+            "ards_severity": 0.20
+        },
+        "auto_peep_penalty": 0.1,
+        "max_delta": 2
+    },
+    "VtEngine": {
+        "normal_range": [6, 8],
+        "ards_range": [4, 6],
+        "copd_factor": 0.9,
+        "max_delta": 50
+    },
+    "VeEngine": {
+        "min_ve": 4.0,
+        "max_ve": 15.0,
+        "paco2_target": 40.0,
+        "paco2_factor": 0.1,
+        "max_delta": 1.0
+    },
+    "RREngine": {
+        "min_rr": 5,
+        "max_rr": 40,
+        "max_rr_copd": 25,
+        "paco2_target": 40.0,
+        "max_delta": 5
+    },
+    "ApneaRREngine": {
+        "min_rate": 5,
+        "max_rate": 40,
+        "max_delta": 5
+    },
+    "PIPEngine": {
+        "min_pip": 5,
+        "max_pip": 40,
+        "plateau_limit": 30,
+        "driving_limit": 15,
+        "max_delta": 3
+    },
+    "PSEngine": {
+        "min_ps": 0,
+        "max_ps": 30,
+        "wob_map": {
+            "Mild": 5,
+            "Moderate": 10,
+            "Severe": 15
+        },
+        "max_delta": 2
+    },
+    "PMaxEngine": {
+        "min_pmax": 20,
+        "max_pmax": 60,
+        "max_delta": 5
+    },
+    "TIEngine": {
+        "min_ti": 0.3,
+        "max_ti": 3.0,
+        "max_delta": 0.2
+    },
+    "RiseTimeEngine": {
+        "min_rise": 1,
+        "max_rise": 10
+    },
+    "CyclingEngine": {
+        "min_cycle": 10,
+        "max_cycle": 50,
+        "default": 25
+    },
+    "FlowTriggerEngine": {
+        "min_flow": 0.5,
+        "max_flow": 5.0
+    },
+    "PressureTriggerEngine": {
+        "min_press": -5.0,
+        "max_press": -0.5
+    },
+    "PeakFlowEngine": {
+        "min_peak": 20,
+        "max_peak": 120,
+        "demand_factors": {
+            "rr_threshold": 20,
+            "flow_starvation_factor": 1.2,
+            "accessory_muscles_factor": 1.15
+        },
+        "resistance_factor": 1.2,
+        "ards_peak_limit": 60,
+        "air_trapping_factor": 1.1,
+        "max_delta": 10
+    },
+    "ASVEngine": {
+        "min_asv": 50,
+        "max_asv": 200
+    },
+    "PAVGainEngine": {
+        "min_gain": 30,
+        "max_gain": 80
+    },
+    "TubeCompEngine": {
+        "min_comp": 0,
+        "max_comp": 100
+    },
+    "IPAPEngine": {
+        "min_ipap": 8,
+        "max_ipap": 25,
+        "max_delta": 2
+    },
+    "EPAPEngine": {
+        "min_epap": 4,
+        "max_epap": 12,
+        "max_delta": 1
+    },
+    "AlarmsEngine": {
+        "base_pressure_margin": 10,
+        "base_vt_margin": 100,
+        "base_rr_margin": 10,
+        "base_mv_margin": 2,
+        "base_fio2_margin": 10,
+        "apnea_default": 20,
+        "compliance_sensitivity": 0.3,
+        "resistance_sensitivity": 0.2,
+        "co2_sensitivity": 0.25,
+        "oxygenation_sensitivity": 0.2,
+        "effort_sensitivity": 0.15
+    }
+}
