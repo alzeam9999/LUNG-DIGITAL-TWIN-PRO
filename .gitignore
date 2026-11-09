@@ -28,3 +28,9 @@ patient_ct_images/*
 # بيئة بايثون الافتراضية
 venv/
 env/
+.venv/
+.env
+.env.*
+!.env.example
+!requirements.txt
+!requirements-ai.txt

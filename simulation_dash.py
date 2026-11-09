@@ -282,13 +282,15 @@ class TrendsWindow(QDialog):
 
 # أضف هذا الكلاس في simulation_dash.py (بعد استيراد auto_adjust_panel)
 
-class AIChatDialog(QDialog):
+from ai_chat import AIChatMixin
+
+class AIChatDialog(AIChatMixin, QDialog):
     # إشارة لإرسال البيانات المدخلة إلى الداشبورد (يمكن استخدامها لاحقاً)
     data_sent = pyqtSignal(dict)
 
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.setWindowTitle("AI Clinical Assistant - Manual Input")
+        self.setWindowTitle("AI Educational Assistant - Simulation")
         self.setMinimumSize(900, 700)
         self.setStyleSheet("background-color: #1c2025; color: white;")
 
@@ -336,6 +338,7 @@ class AIChatDialog(QDialog):
         btn_layout.addWidget(btn_send)
         btn_layout.addWidget(btn_close)
         main_layout.addLayout(btn_layout)
+        self.setup_chat(main_layout, btn_send)
 
     # دوال إنشاء التبويبات (مقتبسة من AutoAdjustPanel مع تعديل طفيف)
     def create_ventilation_mode_tab(self):
@@ -886,7 +889,7 @@ class AIChatDialog(QDialog):
         tab_layout.addWidget(scroll)
         self.tabs.addTab(tab, "7. Advanced/Alarms")
 
-    def on_send(self):
+    def collect_ai_data(self):
         # تجميع جميع البيانات من الحقول
         data = {
             'mode': self.ai_mode_combo.currentText(),
@@ -932,9 +935,7 @@ class AIChatDialog(QDialog):
             'ai_query': self.ai_text.toPlainText(),
         }
         # إرسال الإشارة إلى الداشبورد
-        self.data_sent.emit(data)
-        # إغلاق النافذة بعد التطبيق
-        self.accept()
+        return data
 
 class SimulationDashboard(QMainWindow, ResponsiveMixin):
     home_requested = pyqtSignal()
@@ -1381,7 +1382,6 @@ class SimulationDashboard(QMainWindow, ResponsiveMixin):
 
     def open_ai_chat(self):
         dialog = AIChatDialog(self)
-        dialog.data_sent.connect(self.apply_ai_settings)  # الآن تطبق الإعدادات
         dialog.exec_()
 
     def on_ai_data_received(self, data):
